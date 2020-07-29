@@ -1,0 +1,21 @@
+<p class="NewUsers-title"> Sign-In </p>
+<hr>
+
+<section class="NewUsers-details">
+    <%= form_with url: sessions_path do |form| %>
+        <div class="Form-section" >
+            <p class="Form-label" >Email-ID: </p>
+            <%= form.email_field :email, class: "Form-input", required: true, autofocus: true %>
+        </div>
+        <div class="Form-section" >
+            <p class="Form-label" >Password: </p>
+            <%= form.password_field :password, class: "Form-input", required: true %>
+        </div>
+        <div class="Form-flashMessage">
+            <%= flash[:error] %>
+        </div>
+        <div class="Form-section" >
+            <%= form.submit :"Sign in!", class: "Form-submit" %>
+        </div>
+    <% end %>
+</section>
