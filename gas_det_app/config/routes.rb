@@ -3,5 +3,10 @@ Rails.application.routes.draw do
   get "/", to: "home#index"
 
   resources :users
-  resources :sessions
+  
+  get "/signin", to: "sessions#new", as: :new_session
+  post "/signin", to: "sessions#create", as: :sessions
+  delete "/signout", to: "sessions#destroy", as: :destroy_session
+
+  resources :operations
 end
