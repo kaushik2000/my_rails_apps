@@ -1,0 +1,13 @@
+<%= link_to :"Back to functions", functions_path%>
+
+<h1> Conumers table: </h1>
+<div> 
+    <%= form_with url: consumers_path, class: "data_entry" do |form| %> 
+        <p>Flat Number : <%= form.text_field :flat_no, autofocus: true, required: true %> </p>
+        <p>Name of resident  : <%= form.text_field :resident_name %> </p>
+        <p>Resident status (Tenant / Owner) : <%= collection_select(nil, :user_id, User.all, :id, :name_with_role, { :include_blank => "All" }) %> </p>
+
+        <p>Email-Id : <%= form.email_field :email, required: true  %> </p>
+        <p><%= form.submit :"Add consumer Details"%> </p>
+    <% end %>
+</div>

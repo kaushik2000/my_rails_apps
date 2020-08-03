@@ -1,0 +1,281 @@
+.Orders {
+    background-image: url(orderbck.jpg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.Order-button {
+    background-color: rgb(38, 141, 38);
+    max-width: max-content;
+    font-size: 1.5vw;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    border: 0;
+    padding: 0.5vw;
+    color: white;
+    border-radius: 0.5vw;
+    margin: 2vw;
+    left: 25vw;
+    position: absolute;
+    top: 5vw;
+}
+
+.Order-main {
+    max-width: 50vw;
+    margin: 4.4vw auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1vw;
+    color: rgb(5, 5, 5);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.75vw;
+}
+
+.Order-title {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.5vw;
+    font-size: 1.5vw;
+    color: black;
+    border: 0.15vw solid black;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    margin-bottom: 1vw;
+    margin-top: 0.5vw;
+}
+
+.OrderHistory-Maintitle {
+    font-size: 2vw;
+    padding: 0.5vw;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.OrderHistory-title {
+    font-size: 1.5vw;
+    padding: 0.5vw;
+    font-weight: bold;
+    border: solid black;
+    border-radius: 1vw;
+    margin: 0.2vw;
+    text-align: center;
+}
+
+.Order-section {
+    margin: 2vw auto;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.Order-division {
+    display: flex;
+    padding: 1vw;
+    font-weight: bold;
+    margin: 1vw auto;
+    align-items: center;
+    border-radius: 1vw;
+    box-shadow:  5px 5px 10px #606263, 
+             -5px -5px 10px #ffffff;
+}
+
+.Order-division:hover {
+    background-color: rgba(170, 190, 255, 0.9);
+}
+
+.Order-details {
+    visibility: hidden;
+    left: 0;
+    position: relative;
+}
+
+.Order-division:hover .Order-details {
+    visibility: visible;
+}
+
+.Order-detailsDate {
+    left: 32vw;
+    position: absolute;
+}
+
+.OrderDetails-notDelivered {
+    border: solid rgb(184, 2, 2);
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    font-weight: bolder;
+    color: rgb(182, 0, 0);
+    left: 56vw;
+    position: absolute;
+}
+
+.OrderDetails-delivered {
+    border: solid green;
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    font-weight: bolder;
+    color: green;
+    left: 45vw;
+    position: absolute;
+}
+
+.OrderDetails-deliveredAt {
+    border: solid green;
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    font-weight: bolder;
+    color: green;
+    left: 60vw;
+    position: absolute;
+}
+
+.Order-details-tag {
+    width: 2vw;
+    height: 2vw;
+}
+
+.OrderAdminDetails-id {
+    left: 36vw;
+    position: absolute;
+}
+
+.OrderAdminDetails-date {
+    left: 42vw;
+    position: absolute;
+}
+
+.OrderAdminDetails-customer {
+    left: 52vw;
+    position: absolute;
+    font-size: 1vw;
+    border: solid black;
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    border-width: 0.1vw;
+}
+
+.OrderAdminDetails-notDelivered {
+    border: solid rgb(184, 2, 2);
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    font-weight: bolder;
+    color: rgb(182, 0, 0);
+    left: 63vw;
+    position: absolute;
+}
+
+.OrderAdminDetails-delivered {
+    border: solid green;
+    border-radius: 0.75vw;
+    padding: 0.2vw;
+    font-weight: bolder;
+    color: green;
+    left: 63vw;
+    position: absolute;
+}
+
+.container {
+    left: 0.5vw;
+    display: block;
+    position: relative;
+    padding-left: 1.5vw;
+    margin-bottom: 1.2vw;
+    cursor: pointer;
+    font-size: 1.2vw;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.1vw;
+    width: 1.1vw;
+    border-radius: 0.3vw;
+    background-color: rgb(255, 23, 23);
+}
+
+.Order-division:hover input~.checkmark {
+    background-color: rgb(236, 150, 211);
+}
+
+.container:hover input~.checkmark {
+    background-color: rgb(255, 255, 255);
+}
+
+.container input:checked~.checkmark {
+    background-color: #00c22a;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 0.45vw;
+    top: 0.25vw;
+    width: 0.25vw;
+    height: 0.5vw;
+    border: solid white;
+    border-width: 0 0.15vw 0.15vw 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 6vw;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.3vw;
+    padding: 0.25vw 0.25vw;
+    position: absolute;
+    font-style: italic;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -3vw;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.25vw;
+    border-width: 0.25vw;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

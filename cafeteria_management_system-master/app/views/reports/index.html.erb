@@ -1,0 +1,70 @@
+<head>
+    <title> CMS | Sales Report</title>
+</head>
+<body class= "Report-body">
+    <p>
+        <%= link_to image_tag("return.png", class:"Return-icon"), admin_index_path %>
+    </p>
+    <% if Report.count != 0%>
+        <%= form_with(url: report_path(id: Report.last.id), method: "delete", data: { confirm: 'Are you sure you want to delete the search?'}) do %>
+            <%= image_submit_tag("close.png", class:"ReportCancel-icon") %>
+        <% end %>
+    <% end %>
+
+    <h1 class="Report-title">Sales Report</h1>
+    <% flash.each do |type, errors| %>
+        <div class="Report-flashMessage">
+            <%= errors["start_date"].to_a.each { |message| message }.join %>
+            <br>
+            <%= errors["end_date"].to_a.each { |message| message }.join %>
+        </div>
+    <% end %>
+
+    <% if Report.count == 0%>
+        <p>
+            <%= form_with(url: reports_path, method: "post") do %>
+                <div class="Report-sort">
+                    <label>Start Date:</label>
+                    <%= date_field(nil, :start_date, class: "Date-input", max: Date.today ) %>
+                    <label>End Date:</label>
+                    <%= date_field(nil, :end_date, class: "Date-input", min: ":start_date", max: Date.today ) %>   
+                    <label>Search by User:</label>
+                    <%= collection_select(nil, :user_id, User.all, :id, :name_with_role, { :include_blank => "All" }, class: "Drop-down") %>
+                    <%= submit_tag :"Generate Report", class: "Sort-submit" %>
+                </div>
+            <% end %>
+        </p>
+        <%= render partial: "reports/view-report-section",locals:{
+            orders: Order.delivered,
+        }
+        %>
+    <% else %>
+        <p>
+            <%= form_with(url: report_path(id: Report.last.id), method: "patch") do %>
+                <div class="Report-sort">
+                    <label>Start Date:</label>
+                    <%= date_field(nil, :start_date, class: "Date-input", max: Date.today, value: Report.last.start_date) %>
+                    <label>End Date:</label>
+                    <%= date_field(nil,:end_date,class: "Date-input",min: ":start_date", max: Date.today, value: Report.last.end_date ) %>
+                    <label>Search by User:</label>
+                    <%= collection_select(nil, :user_id, User.all, :id, :name_with_role, { :include_blank => "All" }, class: "Drop-down") %>
+                    <%= submit_tag :"Generate Report", class: "Sort-submit" %>
+                </div>
+            <% end %>
+        </p>
+        <% report_user_id = Report.last.user_id%>
+        <% if report_user_id == nil %>
+            <p class = "ReportView-title" >Showing sales-report for all user : All</p>
+            <%= render partial: "reports/view-report-section",locals:{
+                orders: Order.sort(Report.last.start_date.to_date, Report.last.end_date.to_date).delivered,
+            }
+            %>
+        <% else%>
+            <p class = "ReportView-title" >Showing sales-report for user : <%= User.find_by(id: report_user_id).first_name %></p>
+            <%= render partial: "reports/view-report-section",locals:{
+                orders: Order.sort(Report.last.start_date.to_date, Report.last.end_date.to_date).where(user_id: report_user_id).delivered,
+            }
+            %>
+        <% end %>
+    <% end %>
+</body>
