@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
-      email: params[:email],
+      email_id: params[:email_id],
       password: params[:password],
     )
     user.save

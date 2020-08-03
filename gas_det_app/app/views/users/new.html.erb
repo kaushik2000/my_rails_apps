@@ -3,7 +3,7 @@
 <%= form_with url: users_path do |form| %> 
     <p>First Name : <%= form.text_field :first_name, autofocus: true, required: true %> </p>
     <p>Last Name  : <%= form.text_field :last_name %> </p>
-    <p>Email-ID   : <%= form.email_field :email, required: true  %> </p>
+    <p>Email-ID   : <%= form.email_field :email_id, required: true  %> </p>
     <p>Password   : <%= form.password_field :password, required: true  %> </p>
     <p><%= form.submit :"Sign Up!!"%> </p>
 <% end %>
